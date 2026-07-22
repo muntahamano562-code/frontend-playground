@@ -1,22 +1,32 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
-import { defineConfig, globalIgnores } from 'eslint/config'
+"use strict";
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-    ],
-    languageOptions: {
-      globals: globals.browser,
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+const ESLintPluginReactHooks = require('eslint-plugin-react-hooks');
+
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2022,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
     },
   },
-])
+  plugins: ['react-refresh', 'react-hooks', '@typescript-eslint'],
+  rules: {
+    'react-refresh/only-export-functions': 'warn',
+    ...ESLintPluginReactHooks.configs.all.rules,
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
+  globals: {},
+  env: {
+    browser: true,
+    es2021: true,
+  },
+  ignorePatterns: ['dist/', '.eslintrc.cjs'],
+};

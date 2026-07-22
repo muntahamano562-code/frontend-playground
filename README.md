@@ -1,75 +1,59 @@
-# React + TypeScript + Vite
+# Frontend Accessibility Playground
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + TypeScript accessibility playground for experimenting with custom accessible component implementations.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project Structure
 
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+frontend-playground/
+├── components/
+│   ├── ModalDialog/
+│   │   ├── index.tsx           # Modal Dialog component
+│   │   └── ModalDialog.css     # Component styles
+│   ├── Tabs/
+│   │   ├── index.tsx           # Tabs component
+│   │   └── Tabs.css            # Component styles
+│   └── Disclosure/
+│       ├── index.tsx           # Disclosure component
+│       └── Disclosure.css      # Component styles
+├── src/
+│   ├── App.tsx                # Main application demonstrating component usage
+│   ├── index.css              # Global base styles
+│   └── assets/              # Application assets
+├── .gitignore                # Git ignore file
+├── eslint.config.js         # ESLint configuration
+├── package.json            # Project configuration
+├── README.md              # This README
+├── NOTES.md               # Component implementation notes (to be added)
+└── vite.config.ts         # Vite configuration
+└── tsconfig.json          # TypeScript configuration
 ```
+
+## Components
+
+### Modal Dialog
+An accessible modal dialog component with proper focus trapping and keyboard navigation support.
+
+### Tabs
+A fully accessible tab navigation component with ARIA attributes and keyboard navigation.
+
+### Disclosure
+An accessible disclosure component with smooth state management.
+
+## Features
+
+- ✅ Fully TypeScript with strict type checking
+- ✅ No component library dependencies
+- ✅ Separate CSS files for each component
+- ✅ Accessibility focused (ARIA attributes, keyboard navigation)
+- ✅ Clean, beginner-friendly structure
+
+## Getting Started
+
+1. Navigate to the project directory
+2. Install dependencies: `npm install`
+3. Start development: `npm run dev`
+
+## Notes
+
+For detailed component implementation comparisons and notes about shadcn/ui alternatives, refer to `NOTES.md`.
