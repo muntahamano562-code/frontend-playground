@@ -1,0 +1,84 @@
+.disclosure {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 520px;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.disclosure-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 20px;
+  background: #fafafa;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  gap: 12px;
+}
+
+.disclosure-button:hover {
+  background: #f0f0f0;
+}
+
+.disclosure-button:focus-visible {
+  outline: 2px solid #4a90d9;
+  outline-offset: -2px;
+}
+
+.disclosure-chevron {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.disclosure-button--open .disclosure-chevron {
+  transform: rotate(180deg);
+}
+
+.disclosure-panel {
+  border-top: 1px solid #e0e0e0;
+  background: #fff;
+}
+
+/* Animate panel in on expand (no animation on collapse since hidden is instant) */
+.disclosure-panel:not([hidden]) {
+  animation: disclosure-slide-down 0.2s ease-out;
+}
+
+@keyframes disclosure-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.disclosure-panel-text {
+  margin: 0;
+  padding: 16px 20px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+@media (max-width: 540px) {
+  .disclosure-button {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+  }
+
+  .disclosure-panel-text {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+  }
+}
