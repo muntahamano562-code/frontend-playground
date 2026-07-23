@@ -1,12 +1,10 @@
-*.js
-*.jsx
-*.ts
-*.tsx
 node_modules/
-build/
 dist/
+build/
 .netlify/
+
 .env
 .env*.local
+
 *.log
-*.lock
+node_modules
