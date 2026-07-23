@@ -1,64 +1,57 @@
 # Accessibility Playground Notes
 
-## Comparison: My Components vs shadcn/ui
-
-### Modal
+## Modal
 
 My implementation:
-- Built focus trap manually.
-- Restored focus to the trigger when closing.
-- Added Escape key support.
-- Implemented ARIA dialog roles manually.
+- Built the focus trap manually.
+- Stored and restored the previously focused element.
+- Implemented Escape handling myself.
 
-shadcn/ui:
-- Uses Radix UI primitives for accessibility.
-- Handles focus trapping automatically.
-- Better support for nested dialogs.
-- More robust focus restoration.
+shadcn:
+- Uses Radix UI primitives.
+- Automatically manages focus.
+- Handles nested dialogs and edge cases more robustly.
 
 Gap:
-I manually managed keyboard interactions, while shadcn delegates this to well-tested primitives.
+My version works for this project but doesn't cover as many accessibility edge cases.
 
 ---
 
-### Tabs
+## Tabs
 
 My implementation:
-- Implemented roving tabindex.
-- Added Arrow Left/Right navigation.
-- Added Home and End key support.
-- Used proper ARIA roles.
+- Used useState, useRef and useId.
+- Implemented roving tabindex manually.
+- Added Arrow, Home, End, Enter and Space keyboard support.
 
-shadcn/ui:
-- Cleaner component composition.
-- Better separation of state and presentation.
-- More reusable API.
+shadcn:
+- Separates state and presentation into reusable primitives.
+- Uses a more composable API.
 
 Gap:
-My implementation is functional but less flexible than shadcn's composable structure.
+My implementation is less reusable and customizable.
 
 ---
 
-### Disclosure
+## Disclosure
 
 My implementation:
-- Toggle using Enter and Space.
+- Managed expanded state manually.
 - Used aria-expanded and aria-controls.
-- Managed state with React.
+- Added Enter and Space keyboard support.
 
-shadcn/ui:
-- More polished animations.
-- Cleaner architecture.
-- Better scalability for multiple disclosures.
+shadcn:
+- Uses Radix Accordion.
+- Includes smoother animations.
+- Better support for multiple accordion items.
 
 Gap:
-My implementation lacks animation and advanced customization compared to shadcn.
+My version lacks built-in animations and advanced configuration.
 
 ---
 
-## What I Learned
+## What I learned
 
-- Accessibility requires more than adding ARIA attributes.
-- Keyboard navigation is essential.
-- Focus management is one of the hardest parts.
-- Open-source component libraries are useful references but understanding the underlying accessibility patterns is important.
+- Accessibility requires proper keyboard interaction, not just ARIA attributes.
+- Focus management is one of the most challenging parts of accessible UI.
+- Component libraries handle many edge cases that are easy to miss when implementing components manually.
